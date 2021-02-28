@@ -1,0 +1,5 @@
+#	source color.source	
+#	
+OLD_PROMPT=$PROMPT	# TODO:  change so ONLY sets if OLD_PROMPT is empty	
+PROMPT=%t:$fg_bold[red]%h'%~> '
+
