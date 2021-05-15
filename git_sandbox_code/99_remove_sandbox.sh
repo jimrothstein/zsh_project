@@ -1,5 +1,5 @@
 #!/bin/zsh
 
 # remove /tmp/sandbox 
-rm -rd /tmp/sandbox
+sudo rm -rd /tmp/sandbox
 
