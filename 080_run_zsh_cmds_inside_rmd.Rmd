@@ -1,1 +1,0 @@
-080_run_zsh_cmds_inside_rmd.Rmd
