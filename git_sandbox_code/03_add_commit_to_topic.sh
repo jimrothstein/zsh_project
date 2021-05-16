@@ -5,6 +5,6 @@ cd /tmp/sandbox
 
 echo $(date) >> /tmp/sandbox/example
 git a
-git cm
+git cm wip
 
 
