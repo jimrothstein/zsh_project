@@ -3,6 +3,8 @@
 #  071_run_R_to_upadate.....sh
 # This zsh script runs R at CLI; execute a R command; then exists
 #
+##  Sat  29 May 2021  - best to Rscripts, not zsh scripts
+#
 # Even if install errors, will complete and exit to zsh prompt.
 #
 #
