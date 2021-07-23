@@ -1,20 +1,25 @@
-#!/bin/bash
+#!/usr/bin/zsh
+
+# ====================
 # functions_style.sh
+# ====================
 
 # see https://codereview.stackexchange.com/questions/181855/script-to-create-symlinks-for-dotfiles-in-a-git-repository
+# TAGS:  function
 
 
-    file_exists() { test -e "$1"; }
+file_exists() { test -e "$1"; }
 
-	file_loc="$1"
-    symlink_loc="$2"
+# arg positions
+file_loc="$1"
+symlink_loc="$2"
 
-    if ! file_exists "$file_loc"
-    then
-	    echo "error ...."
-	   exit  99
-    #    return invalid_file_error "$file_loc" 
-    fi
+if ! file_exists "$file_loc"
+  then
+  # return invalid_file_error "$file_loc" 
+    echo "error ...."
+    exit  99
+fi
 
 
 #!/bin/bash
@@ -69,15 +74,4 @@ if [ -n "$BASH_VERSION" ]; then
 else
 	echo "BASH not running"
 fi 
-
-#### -n var set?	#### 
-echo $SPACE
-#X="hello"
-#echo $X
-X=null
-if [[ -n $X ]] ; then
-	echo $X			#  if set, or if X set to null, then true
-else
-	echo "X never set "
-fi
 

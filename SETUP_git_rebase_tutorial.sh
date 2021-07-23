@@ -11,14 +11,17 @@ pause()
 
 ## create sandbox; cd to directory
   git init /tmp/rebase-sandbox
-  export the_dir=/tmp/rebase-sandbox
   cd /tmp/rebase-sandbox
   git commit --allow-empty -m"Commit 0"
-  pause "hit keey"
+
+## why no work?
+  export the_dir=/tmp/rebase-sandbox
+  export the_script=~/code/zsh_scripts_project/
+#  pause "hit keey"
 
 ## show files, pause
-  ls -la * 
-  pause "files ok?"
+   ls -la * 
+#  pause "files ok?"
 
 
 ## commit 1
@@ -39,7 +42,7 @@ pause()
 
 ## but history is messy
   git log --oneline
-  pause "check log, need to fix"
+  pause "check log, need to fix: try autosquash"
 
 
 

@@ -18,6 +18,7 @@
 #	23 removes old number
 #	70 renumbers
 # inbound (source) directory
+# TAGS:  zsh, case, ls
 #
 the_dir=$HOME/Downloads/mp3/from_youtube
 songs=($HOME/Downloads/mp3/from_youtube/*)	#	Array

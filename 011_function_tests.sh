@@ -10,12 +10,6 @@ is_length_zero_v2() { [[ -z "$1" ]]; }			# same
 is_length_zero() { test -z "$1"; }			# true if 0, null, not set
 is_equal_string() { [[ "$1" == "$2" ]];}
 
-my_name(){
-	# 'return'  gives exit code; not what I want here.
-	echo "jim"
-}
-echo "hello "        "$(my_name)"
-exit
 
 print_length()	{
 	if is_length_zero_v2 "$1" 
