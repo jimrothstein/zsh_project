@@ -10,6 +10,9 @@
 #############################
 #	positional parameters
 #
+# To run:  ./014.....    param1
+#############################
+# TAGS:  positional param, zsh, array, test
 #############################
 echo "first position param = ${1}"					# works
 echo "second p param = ${2}"					# works
@@ -17,15 +20,19 @@ echo "program name = ${0}"						# works
 
 #  ./   a b
 s='${@}'
-echo "${s}=${@}"					# a b (all params)
+  echo "params are ${s}=${@}"					# a b (all params)
+
+
+# return line number
+  echo "lineno = ${LINENO}"
 
 # IFS expansion of positional parmas
 s='${*}'
-echo "${s}=${*}" 				# a b  
+echo "IFS expansion ${s}=${*}" 				# a b  
 
 # number of positional parms
 s='${#}'
-echo "${s}=${#}"					# 2
+echo "number of params = ${s}=${#}"					# 2
 
 # current set options in shell
 echo "set options = ${-}"	# hB					

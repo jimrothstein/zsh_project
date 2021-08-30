@@ -1,7 +1,3 @@
-
-<!--
-vim:linebreak:spell:nowrap:cul tw=78 fo=tqlnr foldcolumn=3 cc=+1
--->
 ---
 title: "`r knitr::current_input()`"
 date: "`r paste('last updated', 
@@ -21,64 +17,65 @@ output:
     geometry: margin=0.5in,top=0.25in   
     TAGS:  
 ---
-as of \today:  
-    *  To mix latex and .md, must go with pdf, either pandoc or knit  
-    *  Add r, knitr code to YAML?   then must render as .RMD file
-    *  I do not know how to embed latex, produce html or md (github flavor).  
 
- ===    
-  PDF   [ignores html, css; also ignores YAML header (pandoc & ::render()]
- ===  
-
-  NOTE:   .tex uses a .sty which I do not have.  USE  knitr:: (with TinyTex
-  to locate and install that .sty file)  
-
-TODO: pandoc may think 2nd `%` is both relative directory and file name
-
+<!-- 
 !pandoc % -f markdown -o %.pdf
 
-!pandoc % -f markdown  -t latex -H ../chapter_break.tex -V linkcolor:blue -V fontsize=11pt -V geometry:margin=0.3in -o ~/Downloads/print_and_delete/out.pdf
-!pandoc % -f markdown  -t latex -H ../chapter_break.tex -V linkcolor:blue -V fontsize=11pt -V geometry:margin=0.3in -o out.pdf 
-!pandoc % -f markdown  --pdf-engine xelatex -H chapter_break.tex -V linkcolor:blue -V fontsize=11pt -V geometry:margin=0.3in -o ~/Downloads/print_and_delete/out.pdf
+-->
+
+[~/code/MASTER_INDEX.md]
+[~/code/zsh_scripts_project]
 
 
- ====  
-  HTML [ignores latex]  
- ====    
+## setup tmux; scripts test if running.
+[~/code/zsh_scripts_project/016_tmux_experiments.sh]
 
-  *  !pandoc % -f markdown -V linkcolor:blue -V fontsize=11pt -V geometry:margin=0.3in -o out/out.html 
+[~/code/zsh_scripts_project/021_bash_experiments.sh"]
 
-
-====  
- GITHUB:  *.md display nicely?  [ignores latex]
-====  
-
--H header  
--V or --variable  
---pdf-engine=xelatex  
-
-<!--    this is for knitr:: ONLY
-
---> 
+## positional params | many ${X}  where X is short cut to path, pid, IFS and
+many others 
+~/code/zsh_scripts_project/014_positional_params.sh
 
 
-PANDOC EXAMPLES:  
-https://learnbyexample.github.io/tutorial/ebook-generation/customizing-pandoc/  
+## try-catch (zsh)
+033_try_catch.sh
 
-MARKDOWN GUIDE:  
-https://www.markdownguide.org/basic-syntax/  
-
-\newpage  
+as of \today
 
 
-#### Collect simple zsh commands here:
+### README.md
+
+### Collect simple zsh commands here:
 
 ```
 ls -1
 ```
 
-
-##### list files, 1 per line |  reverse dictionary order |  column 7 of field 1 |
+### SORT
+#### list files, 1 per line |  reverse dictionary order | based on column 7 of field 1 |
 ```
+
 ls -1 | sort -r -k 1.7d
 ```
+
+#### Use arg 1, from script
+```
+ls -1 | sort -r -k 1.${1}d
+```
+
+####  field 1, columns 4,5 in numeric order | then columns 14,15 numeric
+```
+ls -1 * | sort -k 1.4,1.5n -k 1.14,1.15n
+```
+
+-k  = key
+-d  = dictionary order
+-n  = numeric order
+-r  = reverse order
+
+
+#### Examples: tar, backup, theDate=$(date -I), -X exclude 
+SEE /home/jim/code/make_project/make_backup/0999_backup_legal.mk
+
+
+

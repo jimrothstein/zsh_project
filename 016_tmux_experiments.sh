@@ -1,3 +1,8 @@
+# file <- "016_tmux_experiments.sh"
+
+[~/code/MASTER_INDEX.md]
+[~/code/zsh_scripts_project]
+
 tmux set -g status-left-length 60
 tmux set -g status-utf8
 tmux set -g status-left "#[fg=green]#S#[fg=yellow]:#W:#I#[fg=cyan].#P"

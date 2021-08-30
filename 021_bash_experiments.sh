@@ -1,6 +1,12 @@
 #!/bin/zsh
 #
+#
+# ~/code/MASTER_INDEX.md
+# [~/code/zsh_scripts_project]
+#
 #	021_bash_experiments.sh
+# TAGS:  zsh, scripts,case,function, find, script error,
+# file <- "021_bash_experiments.sh#"
 
 #------ nvim: run inline -----
 #	:!./021<TAB>			# works!

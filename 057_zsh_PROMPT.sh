@@ -11,9 +11,23 @@
 #	PLAY WITH PROMPT
 # -----------------------
 
-# Found this prompt, may not be actual run I am using
-x="${PROMPT}"
+## use colors
+  autoload -U colors && colors 
 
+
+
+  # Needs to be on
+  setopt prompt_subst
+
+
+PS1='%n@%m %F{red}%/%f $ ' # david@macbook /tmp $
+
+exit
+
+PROMPT='%h'
+# =========
+## LEGACY
+# =========
 #OLD_PROMPT="$1"
 
 # so use this one

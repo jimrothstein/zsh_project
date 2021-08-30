@@ -1,0 +1,90 @@
+---
+title: "`r knitr::current_input()`"
+date: "`r paste('last updated', 
+    format(lubridate::now(), ' %d %B %Y'))`"
+output:   
+  html_document:  
+        code_folding: show
+        toc: true 
+        toc_depth: 4
+        toc_float: true
+        mathjax: default
+  pdf_document:   
+    latex_engine: xelatex  
+    toc: true
+    toc_depth:  4   
+fontsize: 11pt   
+geometry: margin=0.4in,top=0.25in   
+TAGS:  bindkey
+---
+~/code/MASTER_INDEX.md
+
+
+###  ZSH BINDKEY examples.
+  *  This is an .Rmd file, with zsh chunk.
+  *  knitr as usual.
+
+
+```{r setup, include=FALSE		}
+knitr::opts_chunk$set(echo = TRUE,
+                      comment = "      ##",
+                      error = TRUE,
+                      collapse = T   ) # T easier to read
+```
+
+### 
+When user types keys for alt-b, ZLE handles it. ZLE  sees that this key combo
+is mapped to certain terminal sequences.
+
+
+#### works at CLI, not here
+```{zsh }
+bindkey '\eb'
+```
+
+
+
+```{zsh }
+bindkey | wc -l
+bindkey | head
+```
+
+
+```{zsh}
+zle -al | grep "emacs"
+```
+```{zsh}
+
+zle -al | wc -l
+zle -al | grep "
+
+"```"
+
+
+
+
+```{r render, eval=FALSE, include=FALSE 	} 
+output_dir  <- Sys.getenv("OUTPUT_DIR")
+output_dir
+
+{
+file <- "410_bindkey_examples.Rmd"
+file <- file.path("~/code/zsh_scripts_project/", file)
+file
+}
+
+rmarkdown::render(file,
+                  output_format="html_document",
+                  output_dir=output_dir
+                  )
+
+
+
+## replacement for here
+if (F) {
+  the_dir  <- dirname(file)
+  file  <- file.path(the_dir, file)
+}
+
+
+```

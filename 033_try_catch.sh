@@ -1,4 +1,5 @@
 #!/bin/zsh
+" file <- "033_try_catch.sh#"
 # ------------------------
 #	TRY-CATCH
 #
@@ -11,7 +12,8 @@
 #
 #
 #
-#
+# try sourcing file DNE
+# '|' means run sequentially
 #
 #
 nvim -u NONE -c 'try | source vimrc-fail | catch | cq | endtry | q'; echo $?
