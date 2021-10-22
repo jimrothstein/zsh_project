@@ -1,15 +1,21 @@
-#!/bin/zsh
+#!/usr/bin/zsh
 # ----------------------------
-#	FILE:	
-# 	DIR:	/home/jim/code/bash_project
+#       file <- "057_zsh_PROMPT.sh#"
+# 	DIR:	/home/jim/code/zsh_scripts_project
 # ----------------------------
 # 	USAGE:	
-#   PURPOSE:  	
-#   SEE ALSO:  
+#   PURPOSE:  	try out prompts in ZSH
+#   SEE ALSO:   ~/.config/zsh/prompt.zsh 
 # ----------------------------
 # -----------------------
 #	PLAY WITH PROMPT
 # -----------------------
+
+# NOTES
+# 5 SEP 2021
+#       Do not understand what controls PS1; different inside a script?
+#       Can even save original $PS1 into variable.
+
 
 ## use colors
   autoload -U colors && colors 
@@ -18,6 +24,22 @@
 
   # Needs to be on
   setopt prompt_subst
+
+  # Save old prompt
+  #     OLD_PROMPT=$PROMPT
+  # echo $OLD_PROMPT
+
+  function myprompt {
+      local rc=$reset_color
+      export PS1="%F{cyan}%n%{$rc%}"
+  }
+
+  myprompt
+
+  echo $PROMPT
+  echo $PS1     
+  echo "hello"
+  exit 1
 
 
 PS1='%n@%m %F{red}%/%f $ ' # david@macbook /tmp $

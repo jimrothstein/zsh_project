@@ -1,0 +1,32 @@
+---
+TAGS:  zsh, tee
+---
+
+####  tee    takes its input stream and also sends to 2nd
+
+#### NOT finished. [See Index Card]
+
+!/bin/zsh
+file <- "/home/jim/code/zsh_scripts_project/440_tee_redirect.Rmd"
+
+1 = stand output  
+
+2 = stand error
+
+LHS flows to 1  AND file log.txt
+
+
+
+```{zsh}
+echo jim1 | tee log.txt
+```
+
+
+
+```{r render, eval = F, include = F}
+rmarkdown::render("/home/jim/code/zsh_scripts_project/440_tee_redirect.Rmd",
+                  output_format = "pdf_document",
+                  output_dir = "~/Downloads/print_and_delete/")
+
+```
+
