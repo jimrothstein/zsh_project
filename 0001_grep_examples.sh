@@ -55,7 +55,6 @@ print -l * | grep -Ei ${1}
 
 
 
-#!/bin/bash
 
 str="hello"
 r="h"

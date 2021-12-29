@@ -1,0 +1,41 @@
+hello
+-------------------
+Find Judith followed somewhere by digit
+[01;31m[KJudith[m[K is 10 on scale of 10!
+-------------------
+Find digits
+Judith is [01;31m[K1[m[K[01;31m[K0[m[K on scale of [01;31m[K1[m[K[01;31m[K0[m[K!
+judy is [01;31m[K3[m[K
+-------------------
+digit IF followed by somewhere by x
+[01;31m[K3[m[K ....x ...x
+-------------------
+digit IF followed immediately by x
+B: ....[01;31m[K3[m[Kx ...x
+-------------------
+Match x and digits in either order; C does not match
+B works because followed by is zero width; sees x, so it meets criteria
+C does not
+[01;31m[KA: ...x3[m[K
+[01;31m[KB: ...3[m[Kx
+hello
+\d(?=x)
+-------------------
+Find Judith followed somewhere by digit
+[01;31m[KJudith[m[K is 10 on scale of 10!
+-------------------
+Find digits
+Judith is [01;31m[K1[m[K[01;31m[K0[m[K on scale of [01;31m[K1[m[K[01;31m[K0[m[K!
+judy is [01;31m[K3[m[K
+-------------------
+digit IF followed by somewhere by x
+[01;31m[K3[m[K ....x ...x
+-------------------
+digit IF followed immediately by x
+B: ....[01;31m[K3[m[Kx ...x
+-------------------
+Match x and digits in either order; C does not match
+B works because followed by is zero width; sees x, so it meets criteria
+C does not
+[01;31m[KA: ...x3[m[K
+[01;31m[KB: ...3[m[Kx
