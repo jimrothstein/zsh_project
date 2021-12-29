@@ -1,25 +1,29 @@
 #!/bin/zsh
 
+#   PURPOSE:   EXAMPLES of Basic GREP and regex (-E = Extended)
+#   USAGE:    ./001....  'regex'   >> file.txt
+#
+#   :vsplit term://zsh
+#
+#
+alias grep="grep --color=always"
 str="hello"
-r="h"
-echo $str | grep -E "$r" -
+r=h
+echo $str | grep -E $r -
 
+line_break="-------------------"
+print ${line_break}
 #2
 
-str="Surely this regular expression should match this."; r="this."
-echo $str | grep -E "$r" -
+str="Surely this regular expression should match this." 
+r=this.
+echo $str | grep -E $r -
+print ${line_break}
 
-
-#!/bin/zsh
 # ----------------------------
-#	FILE: 	0003_grep_file_names.sh
-# 	DIR:	/home/jim/code/grep_project
-# ----------------------------
-# 	USAGE:	./0003_grep<TAB> '~'
 #		PARM  ${1} must be regex surrounded by single quotes
 #   PURPOSE:   For given directory (set by dir=), find all file names match 
 #								a grep pattern.
-#   SEE ALSO:  
 # ----------------------------
 
 # get number of params 
@@ -28,14 +32,16 @@ echo $n
 
 # check params
 if [ $n -lt 1 ]
-then exit 0
+then 
+    echo "please provide a regex"
+    exit 0
 fi
 
 
 #exit 99
 #
 # assign  location for mp3 files (temp only)
-dir=~/Downloads/mp3/practice_area_dup/
+# dir=~/Downloads/mp3/practice_area_dup/
 
 # ----------------------
 # Uncomment to use dir
@@ -45,28 +51,18 @@ dir=~/Downloads/mp3/practice_area_dup/
 # ----------------------
 #
 #
+
+print ${line_break}
+echo ${1}
 # ----------------------
 # Uncomment to use current dir
-print -l * | grep -Ei ${1} 
+print -l * | grep -E '\.sh$' 
 # ----------------------
 
+print ${line_break}
 
 
-
-
-
-
-str="hello"
-r="h"
-echo $str | grep -E "$r" -
-
-#2
-
-str="Surely this regular expression should match this."; r="this."
-echo $str | grep -E "$r" -
-
-```
-
+exit
 
 There is no theory of evolution. Only a list of animals Chuck Norris allows to live.
 
@@ -134,18 +130,6 @@ bat
 
 
 
-#!/bin/zsh
-# ----------------------------
-#	FILE: 	0100_grep_file_names_regex.sh
-# 	DIR:	/home/jim/code/grep_project
-# ----------------------------
-
-
-# ---------------------------------------------
-#
-# USAGE:  ./0100_grep_file_names_regex<TAB> <regex>
-# PURPOSE:  For current directory, find all files match <regex> 
-#
 #
 # Example 1:  Files end in  'sh$' 
 # ./0100_<TAB> 'sh$'
@@ -155,7 +139,7 @@ bat
 # ./0100_<TAB> '^0'
 
 
-print -l * | grep -Ei ${1}
+# print -l * | grep -Ei ${1}
 
 # print -l $1 | grep -Ei 'sh$'
 
@@ -169,15 +153,15 @@ print -l * | grep -Ei ${1}
 # 
 # ----------------------
 # Uncomment to use current dir
-print -l * | grep -Ei ${1} 
+# print -l * | grep -Ei ${1} 
 # ----------------------
 #
 #   SEE ALSO:  woolridge: https://mywiki.wooledge.org/BashFAQ/073
 # ----------------------------
-VIRTUAL_ENV=/Users/foo/.virtualenvs/venv-test-server
-
-regex="^.*\/venv-(.*)$"
-if [[ $VIRTUAL_ENV =~ $regex ]] ; then
-  echo "Matched!"
-  echo ${BASH_REMATCH[1]}
-fi
+# VIRTUAL_ENV=/Users/foo/.virtualenvs/venv-test-server
+# 
+# regex="^.*\/venv-(.*)$"
+# if [[ $VIRTUAL_ENV =~ $regex ]] ; then
+#   echo "Matched!"
+#   echo ${BASH_REMATCH[1]}
+# fi
