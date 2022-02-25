@@ -39,3 +39,4 @@ B works because followed by is zero width; sees x, so it meets criteria
 C does not
 [01;31m[KA: ...x3[m[K
 [01;31m[KB: ...3[m[Kx
+## junk

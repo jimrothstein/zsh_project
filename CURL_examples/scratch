@@ -1,0 +1,27 @@
+#   file <- "030_curl_neovim.md"
+
+# =================================================
+# https://nazarii.bardiuk.com/posts/vim-curl.html
+#   CAUTION:   run this and will replace this file with result
+
+# =================================================
+
+--url http://httpbin.org
+--get
+--header  "User-Agent: vim/curl"
+--silent
+--show-error
+--data a=b
+--data-urlencode "c=a+b"
+--data '{"name" : "jim"}'
+
+
+#   no output
+#   -o  /dev/null
+    -o  saved 
+
+#run the command
+
+# NOTE the %
+#     :%!curl --config -
+
