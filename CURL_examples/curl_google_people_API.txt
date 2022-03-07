@@ -1,0 +1,21 @@
+
+# ======================================================
+# curl + Google People API 
+#
+# REF:  https://www.daimto.com/how-to-get-a-google-access-token-with-curl/
+# How to get a Google access token with CURL. | Daimto
+# ======================================================
+#
+#   Credentials, aka Client ID (for oauth)
+#
+#
+#NEXT,  use authorization code and get access code
+
+## see ~/.Renviron for snip
+curl -sv \
+--request POST \
+--data {SNIP}&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" \ 
+"https://oauth2.googleapis.com/token"
+
+# old url?
+#https://accounts.google.com/o/oauth2/token 

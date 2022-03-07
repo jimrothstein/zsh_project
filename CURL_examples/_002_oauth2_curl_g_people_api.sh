@@ -26,7 +26,7 @@
 #   https://accounts.google.com/o/oauth2/v2/auth?client_id=358088442289-amr4b5f5l1h9jicffu12d9t1vooiv10d.apps.googleusercontent.com&redirect_uri=urn:ietf:wg:oauth:2.0:oob&scope=https://www.googleapis.com/auth/userinfo.profile&response_type=code
 
 #   returns
-code=4/1AX4XfWisGY43zYSJG_Cd3RiZOS0sg9jg3VjaEmSocGfeUaDrcflvlwBauYU
+code= 4/1
 
 
 # =====================================

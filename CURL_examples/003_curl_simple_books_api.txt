@@ -40,7 +40,7 @@ exit
 #
 #   Suppose HTTR2_GIST is set in ~/.Renviron
 # In shell:
-#       var=$(Rscript -e "Sys.getenv('HTTR2_GIST')") 
+#       var=$(Rscript -e "cat(Sys.getenv('HTTR2_GIST'))")
 #       echo $var
 # =======================================================
 #

@@ -1,0 +1,8 @@
+
+# =================================================================
+#   -d, --data what to send to server (as if browser had sent it)
+# =================================================================
+#   PURPOSE:  seek 
+curl "http://brentertainment.com/oauth2/lockdin/token" \
+    -d "grant_type=password&client_id=demoapp&client_secret=demopass&\
+    username=demouser&password=testpass"

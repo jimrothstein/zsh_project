@@ -1,0 +1,183 @@
+== Info:   Trying 52.71.237.206...
+== Info: TCP_NODELAY set
+== Info: Connected to openexchangerates.org (52.71.237.206) port 443 (#0)
+== Info: ALPN, offering h2
+== Info: ALPN, offering http/1.1
+== Info: successfully set certificate verify locations:
+== Info:   CAfile: /etc/ssl/certs/ca-certificates.crt
+  CApath: /etc/ssl/certs
+=> Send SSL data, 5 bytes (0x5)
+0000: .....
+== Info: TLSv1.3 (OUT), TLS handshake, Client hello (1):
+=> Send SSL data, 512 bytes (0x200)
+0000: ........\B.....(Z4.V54.....R [.fp..y.. .........\...ID.........
+0040: %..."...>.......,.0.........+./...$.(.k.#.'.g.....9.....3.....=.
+0080: <.5./.....u.........openexchangerates.org.......................
+00c0: .3t.........h2.http/1.1...........0.............................
+0100: ....................+............-.....3.&.$... .^.....,...{..
+0140: .;.....$...u.D.p................................................
+0180: ................................................................
+01c0: ................................................................
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....Y
+== Info: TLSv1.3 (IN), TLS handshake, Server hello (2):
+<= Recv SSL data, 89 bytes (0x59)
+0000: ...U..d.........m.J.F%..$....K........ ....c.n.D...%.c..X...O...
+0040: .5....../................
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....m
+== Info: TLSv1.2 (IN), TLS handshake, Certificate (11):
+<= Recv SSL data, 4973 bytes (0x136d)
+0000: ...i..f...0...0...........j.l..%.A.'....0...*.H........0F1.0...
+0040: U....US1.0...U....Amazon1.0...U....Server CA 1B1.0...U....Amazon
+0080: 0...210502000000Z..220531235959Z0 1.0...U....openexchangerates.o
+00c0: rg0.."0...*.H.............0............4......C....R.._.).psv<..
+0100: ;.VI...Q0..p.....E.}..i.....Gy...K.5.q..........Q..q{..@fwX...l>
+0140: kT.F....3...x... ..$.......<y. ..K......wS...oEq....M.t .3kwX...
+0180: ......J>!?.....i..L..OsD.Gu..ZV..:...5...?....Z.V.xuT..::.!..-..
+01c0: (.i..]..N..].n.D.x......q.~.\.pb..7.........0...0...U.#..0...Y.f
+0200: .R.{..<...'.t[.=.0...U.......u......a.(}q.D.cXm.09..U...200..ope
+0240: nexchangerates.org..*.openexchangerates.org0...U...........0...U
+0280: .%..0...+.........+.......0;..U...40200...,.*http://crl.sca1b.am
+02c0: azontrust.com/sca1b.crl0...U. ..0.0...g.....0u..+........i0g0-..
+0300: +.....0..!http://ocsp.sca1b.amazontrust.com06..+.....0..*http://
+0340: crt.sca1b.amazontrust.com/sca1b.crt0...U.......0.0....+.....y..
+0380: ....o...k.i.v.F.U.u.. 0...i..}.,At..I.....p.mG...y+........G0E. 
+03c0: 8..r5?...P..}S8......5..tR.lZg...!..O.d......h...s.u.([.......J+
+0400: ./..w."EE.YU$V.?./..m..#&c..K]..\n......y+..f.....H0F.!........
+0440: .A95'>..b.).$.......[...!..8\.. hVE ....N'..3.....q.8....U.v.A
+0480: ...."FJ...:.B.^N1.....K.h..b......y+........G0E. e../..M..cB#.A#
+04c0: .vxm"..r....6...y.!....`...A...\\.).I..M.........dS.0...*.H.....
+0500: ..............4.2L;+5....Q.Tr(+.......Up...N....(._..A...L.EV...
+0540: .m<l....&z....1.......w.....-z.`D_.r...{.4....Zt............D...
+0580: ..G.T....I.P.z3#.....H^[....g....5.....D.:....!M..=.........E.`
+05c0: .:......nd.Q.yvixF.....d......b..:..K..E.7...FYm.Gu..v..MF...].W
+0600: .l.q..F...M0..I0..1.........W....w..S2[...V.0...*.H........091.
+0640: 0...U....US1.0...U....Amazon1.0...U....Amazon Root CA 10...15102
+0680: 2000000Z..251019000000Z0F1.0...U....US1.0...U....Amazon1.0...U..
+06c0: ..Server CA 1B1.0...U....Amazon0.."0...*.H.............0........
+0700: .N.g...j.7Z.:0.......(H..)..nS....9..w.....p..k....q..m...*N....
+0740: ....<..9...X...V%.>Rz..)...nP.._1....Jb...>G..'... .....5._..M.k
+0780: 7..P>D..Z.f..~.jU...5.....uNXU}Sk.k..B...........+....S..g....:.
+07c0: .s._...r.~...0c*..z-......2>.....<...P..C..*..h....Je.J...L.U...
+0800: ........;0..70...U.......0.......0...U...........0...U......Y.f.
+0840: R.{..<...'.t[.=.0...U.#..0.......4.......Y....N..0{..+........o0
+0880: m0/..+.....0..#http://ocsp.rootca1.amazontrust.com0:..+.....0...
+08c0: http://crt.rootca1.amazontrust.com/rootca1.cer0?..U...80604.2.0.
+0900: .http://crl.rootca1.amazontrust.com/rootca1.crl0...U. ..0.0...g.
+0940: ....0...*.H................5.y...B...csS9R5........../..o..Nr. 0
+0980: a.....'.E..v>.J....E..C...m.n.1.../1..ma7{X..Q..(.O.v......^.f..
+09c0: ......). `H.....Se5..k.Q@UW_...">..^.......AZ.R...6.O-...h5..r..
+0a00: ..}W.y.7.{`....-.w.I.'.8.......H.........vR...Axp.m..J.x-^...L`.
+0a40: .G.x-...R..9,../.3........0...0..z.........J*'.....+.......0..
+0a80: .*.H........0..1.0...U....US1.0...U....Arizona1.0...U....Scottsd
+0ac0: ale1%0#..U....Starfield Technologies, Inc.1;09..U...2Starfield S
+0b00: ervices Root Certificate Authority - G20...150525120000Z..371231
+0b40: 010000Z091.0...U....US1.0...U....Amazon1.0...U....Amazon Root CA
+0b80:  10.."0...*.H.............0.........x.q.x..q.G.Pt}n...v..h.X!`.t
+0bc0: ../..-...CzN...6.....H...6L...#.>.7....Ih....v8.a....6..JV.E....
+0c00: ..t...59/.. P.lz.......G..P8....9X.....Hg0...x^o..Q.0.f.Ef.T....
+0c40: .H....0-}-tp5..$...Yn.s...2F(.C........$.-K.q\^i.....8..P8o..-b.
+0c80: ...T.w.g....#.?@  ...L>;$&...l............10..-0...U.......0...
+0cc0: .0...U...........0...U..........4.......Y....N..0...U.#..0...._.
+0d00: ....0+8...mJ.....0x..+........l0j0...+.....0.."http://ocsp.rootg
+0d40: 2.amazontrust.com08..+.....0..,http://crt.rootg2.amazontrust.com
+0d80: /rootg2.cer0=..U...60402.0...,http://crl.rootg2.amazontrust.com/
+0dc0: rootg2.crl0...U. ..0.0...U. .0...*.H.............b7B\...>.,...lE
+0e00: ...z..X....>..%<.oP..5j..4.2!.HD...=..sm....l.(...Gy..~0[.;.`.w
+0e40: .....|^....{"....~.F....&W.09b.........>.ChlW.... ....j]..Jm.X..
+0e80: .91_|s...j...'....F.~.r..R>...cw.i..9....EM.Q:.]]7dL~0.U$B.6.]..
+0ec0: .a.....$...t..{E)P9....5%..jG#1/\.....bQ.*...4.!...y0..u0..]....
+0f00: ......JL4..0...*.H........0h1.0...U....US1%0#..U....Starfield T
+0f40: echnologies, Inc.1200..U...)Starfield Class 2 Certification Auth
+0f80: ority0...090902000000Z..340628173916Z0..1.0...U....US1.0...U....
+0fc0: Arizona1.0...U....Scottsdale1%0#..U....Starfield Technologies, I
+1000: nc.1;09..U...2Starfield Services Root Certificate Authority - G2
+1040: 0.."0...*.H.............0..........:.*.N....._..S..?... .m):..}<
+1080: .kv8c.6`..^\.../Y...%C..i.R...q..-.No..I....V.+.t....&......j;X
+10c0: ..GV.%..pS...t..g..h:..@Z.JN.C.;.V..p.R.{}.:..1.E..`..Y.+..4G...
+1100: .em..,.......I|fN.:m...4.....3.G..k.%.....EF2.p....IC..ls.d.aA..
+1140: .T../.".&..YTh...*/.U.u@`...U9..........0..0...U.......0....0..
+1180: .U...........0...U......._.....0+8...mJ.....0...U.#..0...._.....
+11c0: ..[U.........0O..+........C0A0...+.....0...http://o.ss2.us/0!..+
+1200: .....0...http://x.ss2.us/x.cer0&..U....0.0.......http://s.ss2.us
+1240: /r.crl0...U. ..0.0...U. .0...*.H.............#...W.}..yL..U..Sn>
+1280: G...U...6...S.]4(k..U.g..?..3..X...../..`.........u.O..m......~
+12c0: @,....v.3.w...S..d..'.i.M^....u.XD-.<p...i..w.1^,...:Gi.y_..T.
+1300: .^.x.`'...w.#Sw]...Y.......$.5.z....}..?...rT....Y{..R.F...dv.H.
+1340: .y.nV..,....8.....[.....4I.V..._.3..G.0.]...
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....M
+== Info: TLSv1.2 (IN), TLS handshake, Server key exchange (12):
+<= Recv SSL data, 333 bytes (0x14d)
+0000: ...I...A.R..K^..;.....I.....3.l..4......H.%`..*..H....1Y..T...`
+0040: [.ax..y83....Q\..m......./.DR..f.-....p..9..".h'.i.......A.^..CF
+0080: ..."$:@.y.....$.M.Iq.Zn..eP.v..(.......'.J.#.:...L...8.y|z...j.
+00c0: [A8.K^3.O...e..g],..L.zK.h.....?!k.>.4.K.....~a.........6......
+0100: Vr....6>u.`.........?}.m.Rk"..p.w.5.f)W'..Da.B:.85..6..HL...b..
+0140: .E..=.y...^..
+<= Recv SSL data, 5 bytes (0x5)
+0000: .....
+== Info: TLSv1.2 (IN), TLS handshake, Server finished (14):
+<= Recv SSL data, 4 bytes (0x4)
+0000: ....
+=> Send SSL data, 5 bytes (0x5)
+0000: ....F
+== Info: TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
+=> Send SSL data, 70 bytes (0x46)
+0000: ...BA.n-q..x..Dny...IGZ:.....J~..LA....4C..O..?r...........9%k.
+0040: 8T..M_
+=> Send SSL data, 5 bytes (0x5)
+0000: .....
+== Info: TLSv1.2 (OUT), TLS change cipher, Client hello (1):
+=> Send SSL data, 1 bytes (0x1)
+0000: .
+=> Send SSL data, 5 bytes (0x5)
+0000: ....(
+== Info: TLSv1.2 (OUT), TLS handshake, Finished (20):
+=> Send SSL data, 16 bytes (0x10)
+0000: .......^....lv..
+<= Recv SSL data, 5 bytes (0x5)
+0000: .....
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....(
+== Info: TLSv1.2 (IN), TLS handshake, Finished (20):
+<= Recv SSL data, 16 bytes (0x10)
+0000: .......&72.0`.g.
+== Info: SSL connection using TLSv1.2 / ECDHE-RSA-AES128-GCM-SHA256
+== Info: ALPN, server did not agree to a protocol
+== Info: Server certificate:
+== Info:  subject: CN=openexchangerates.org
+== Info:  start date: May  2 00:00:00 2021 GMT
+== Info:  expire date: May 31 23:59:59 2022 GMT
+== Info:  subjectAltName: host "openexchangerates.org" matched cert's "openexchangerates.org"
+== Info:  issuer: C=US; O=Amazon; OU=Server CA 1B; CN=Amazon
+== Info:  SSL certificate verify ok.
+=> Send SSL data, 5 bytes (0x5)
+0000: .....
+=> Send header, 188 bytes (0xbc)
+0000: HEAD /api/latest-json?app_id=0f10c9cdbc7f41c886f6b2fe4c5ed6a6&&s
+0040: ymbols=RUB%26prettyprint%3Dtrue HTTP/1.1
+006a: Host: openexchangerates.org
+0087: User-Agent: curl/7.58.0
+00a0: Accept: application/json
+00ba: 
+<= Recv SSL data, 5 bytes (0x5)
+0000: .....
+<= Recv header, 33 bytes (0x21)
+0000: HTTP/1.1 405 Method Not Allowed
+<= Recv header, 20 bytes (0x14)
+0000: Content-Length: 19
+<= Recv header, 41 bytes (0x29)
+0000: Content-Type: text/plain; charset=utf-8
+<= Recv header, 37 bytes (0x25)
+0000: Date: Thu, 03 Mar 2022 23:32:28 GMT
+<= Recv header, 22 bytes (0x16)
+0000: Server: nginx/1.12.2
+<= Recv header, 33 bytes (0x21)
+0000: X-Content-Type-Options: nosniff
+<= Recv header, 24 bytes (0x18)
+0000: Connection: keep-alive
+<= Recv header, 2 bytes (0x2)
+0000: 
+== Info: Connection #0 to host openexchangerates.org left intact

@@ -1,0 +1,24 @@
+# file <- "002_config_post.txt"
+# =======================================
+#  PURPOSE: simple config file for curl
+#   USAGE:  curl --config 001_config_simple.txt 
+# =======================================
+
+
+# !so 34847981
+# NOT Working
+#   USE heredoc notation
+#   send data in body/payload
+
+
+-H  "Expect:" 
+-H 'Content-Type: text/json; charset=utf-8' 
+-d @- << 'EOF'
+
+{
+    "field1": "test",
+    "field2": {
+        "foo": "bar"
+        }
+}
+EOF

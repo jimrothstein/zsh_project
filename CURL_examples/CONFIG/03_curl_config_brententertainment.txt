@@ -1,0 +1,34 @@
+# file <- "002_config_post.txt"
+
+#       file <- "03_curl_config_brententertainment.txt"
+# =======================================
+#  PURPOSE: simple config file for curl
+#   USAGE:  curl --config 001_config_simple.txt 
+# =======================================
+
+
+#   405 Method Not Allowed  , sometimes 500 Internal Server Error
+#   -G  removed:  Seems to say it only accepts POST
+#   Not working
+
+url = "http://brentertainment.com/oauth2/lockdin/token" 
+
+#   save actual request
+--trace-ascii request.txt
+-s
+-i 
+
+# response headers only
+# -I  
+
+-X POST
+
+#   When quote, had problems
+-d grant_type=password&client_id=demoapp&client_secret=demopass&username=demouser&password=testpass
+
+
+-H "Accept:application/json"
+#   -o /dev/null
+
+
+
