@@ -1,0 +1,61 @@
+#!/bin/zsh
+# ----------------------------
+# file <- "/home/jim/code/zsh_scripts_project/CURL_examples/004_curl_youtube_api_search.txt#"
+# ----------------------------
+#
+# =========================
+#   Simple youtube search
+#
+#   PURPOSE:  Use curl alone, simple search in youtube api
+# 	USAGE:  Assemble all the pieces, except Bearer token, to run CURL  
+# 	        Because no Bearer token, do NOT expect to work
+# 	        USE neovim terminal.
+# =========================
+#
+#
+# ============================================================
+#
+# ============================================================
+# GOAL:
+#   - Once curl is successful, copy string to R and use curl_translate to get
+#   httr2 code
+
+# Google CLIENT_ID (for oauth2), refers to this as key
+key = 
+url=https://youtube.googleapis.com/youtube/v3/search
+q='?part=snippet&maxResults=5&q=Lennon%20Sisters'
+
+##  Construct URL
+#   use key=   (for Google)
+#   use $key  for oauth2
+#   use $api_key for api
+URL=${ENDPOINT}?key=${key}
+URL=${URL}${PARM}
+echo $URL
+
+echo "Running it ..."
+# 
+curl -v $URL \
+  --header 'Accept: application/json' \
+  --compressed
+
+exit
+
+
+#PLACEHOLDER
+
+
+# =======================================================================
+#    PURPOSE:    Use curl, plus authorization tokens, to search Youtube
+#    PLACEHOLDER
+
+# =======================================================================
+##  From Google Explorer, simple search for "Lennon Sisters"
+curl \
+  'https://youtube.googleapis.com/youtube/v3/search? \
+#------------------------------------------------------
+  part=snippet&q=Lennon%20Sisters&key=[YOUR_API_KEY]' \
+  --header 'Authorization: Bearer [YOUR_ACCESS_TOKEN]' \
+  --header 'Accept: application/json' \
+  --compressed
+exit
