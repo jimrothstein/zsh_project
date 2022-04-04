@@ -1,0 +1,230 @@
+--- 
+title: Template for .Rmd 
+date: "`r paste('last updated', 
+    format(lubridate::now(), '%H:%M, %d %B %Y'))`"
+output: 
+  pdf_document: 
+    latex_engine: lualatex
+toc: TRUE 
+toc_depth:  1 
+fontsize: 12pt 
+geometry: margin=0.5in,top=0.25in 
+TAGS:  httr,
+---
+
+```
+PURPOSE:    HTTR2::  Given ONE video,  return ALL Comments 
+Authorization: Bearer [YOUR_ACCESS_TOKEN]
+Accept: application/json
+
+
+Source:  https://developers.google.com/youtube/v3/guides/auth/installed-apps
+(1APR2022)
+
+Google's example, with loop for uri_redirect
+https://accounts.google.com/o/oauth2/v2/auth?
+ scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly&
+ response_type=code&
+ state=security_token%3D138r5719ru3e1%26url%3Dhttps%3A%2F%2Foauth2.example.com%2Ftoken&
+ redirect_uri=http%3A//127.0.0.1%3A9004&
+ client_id=client_id
+
+
+	-  Google's authorization server: https://accounts.google.com/o/oauth2/v2/auth
+	-	 For Token:  https://oauth2.googleapis.com/token 
+
+### Request:  appropriate query sent to:
+GET https://www.googleapis.com/youtube/v3/commentThreads 
+
+### SCOPES:
+https://www.googleapis.com/auth/youtube	Manage your YouTube account
+https://www.googleapis.com/auth/youtube.force-ssl	See, edit, and permanently delete your YouTube videos, ratings, comments and captions
+
+### From Explorer
+GET https://youtube.googleapis.com/youtube/v3/playlists?part=snippet%2CcontentDetails&maxResults=5&mine=true&key=[YOUR_API_KEY] HTTP/1.1
+
+Authorization: Bearer [YOUR_ACCESS_TOKEN]
+Accept: application/json
+
+
+###
+same, but as Curl
+    
+curl \
+  'https://youtube.googleapis.com/youtube/v3/playlists?part=snippet%2CcontentDetails&maxResults=5&mine=true&key=[YOUR_API_KEY]' \
+  --header 'Authorization: Bearer [YOUR_ACCESS_TOKEN]' \
+  --header 'Accept: application/json' \
+  --compressed
+
+
+
+###   From Google Playground
+   https://youtube.googleapis.com/youtube/v3/commentThreads?videoId=Mec9sw1cJk8&part=snippet,replies
+###
+
+
+
+## SAMPLE (from httr code)
+query  <- list(
+                videoId  = "Mec9sw1cJk8",  # carter
+                part   =   "snippet,replies",
+                fields  =  paste(sep = ", ", "nextPageToken",
+      "items(snippet(topLevelComment(snippet(videoId,textDisplay))))"
+    ))
+req
+    playlistId  =  "PLlXfTHzgMRUIqYrutsFXCOmiqKUgOgGJ5"  # Pavel Grinfeld, Linear Alg 3
+```
+
+```
+
+client_id=$(Rscript -e "cat(Sys.getenv('OAUTH2_ID'))")
+echo $client_id
+```
+
+
+
+
+# redirect_url updated (march 2022)
+# As of 1APR 2022, paste resulting string (from terminal) into browser, I
+think it worked!   Even though no server running!  Browser returned error, but
+in the url field was 127.0.0.1?code=AUTH.CODE 
+
+
+# For youtube
+echo "curl -Lsv \"https://accounts.google.com/o/oauth2/v2/auth?\
+client_id=$client_id&\
+redirect_uri=https://127.0.0.1:8080&\
+scope=https://www.googleapis.com/auth/youtube&\
+response_type=code\""
+
+
+scope = list(
+        "https://www.googleapis.com/auth/youtube",
+        "https://www.googleapis.com/auth/youtube.force-ssl")
+```
+
+```{r setup, include=FALSE		}
+knitr::opts_chunk$set(echo = TRUE,
+                      comment = "      ##",
+                      error = TRUE,
+                      collapse = TRUE)
+library(httr2)
+```
+
+Procedure: Follow hadley outlines in Vignette for Github and and getting user's
+information.  (Requires oauth token)
+
+To let httr2 handle the details, use this function:
+
+httr2::req_oauth_auth_code()
+
+If I have this right, this will (1) get the access token and (2) complete REST
+request.
+```{r begin}
+library(httr2)
+
+##  URLs,  for base, authorization, token 
+base_url  <- "https://www.googleapis.com/youtube/v3/commentThreads"
+base_url  <- "https://www.googleapis.com/youtube/v3/playlists"
+auth_url = "https://accounts.google.com/o/auth2/v2/auth"
+token_url="https://oauth2.googleapis.com/token"
+
+
+## PROJECT2 and is correct
+API_KEY= Sys.getenv("API_KEY")
+client_id = Sys.getenv("OAUTH2_ID")
+client_secret = Sys.getenv("OAUTH2_SECRET")
+
+# To Google scope is single string (character[1]) Multiple scopes separate by
+# whitespace.
+scope = paste0("https://www.googleapis.com/auth/youtube"," ","https://www.googleapis.com/auth/youtube.force-ssl")
+```
+
+#### client
+```{r client}
+### Like the github example, browser does pop up.
+### But no chance to authorize, a google screen says 404, requested URL can not
+### be found on this server.
+
+##  this does setup server; uri; firefox shows details 
+##
+##      client
+
+client = oauth_client(id=  client_id,
+        token_url  = token_url,
+        secret = client_secret,
+        key =  API_KEY,
+        auth = "body",   # header or body
+        name = "youtube_ONE_video_ALL_comments")
+
+
+
+#####
+
+```
+Waiting for authentication in browser...
+Press Esc/Ctrl + C to abort
+Error in `oauth_flow_auth_code_listen()`:
+! Authentication failed; invalid url from server.
+Run `rlang::last_error()` to see where the error occurred.
+> resp
+Error: object 'resp' not found
+```
+```{r do_it}
+
+
+req = request("https://www.googleapis.com/youtube/v3/playlists?part=snippet&mine=true")
+
+resp = httr2::req_oauth_auth_code( req,
+  client = client,
+  auth_url = auth_url,
+  scope = scope, 
+  pkce = FALSE,
+  auth_params = list(scope=scope, response_type="code"),
+  token_params = list(scope=scope, grant_type="authorization_code"),
+  host_name = "localhost",
+  host_ip = "127.0.0.1",
+  # port = httpuv::randomPort()
+  port = 8080, 
+) %>% req_perform()
+
+resp
+
+```
+
+
+```{r server}
+
+# s = httpuv::startServer("127.0.0.1", port=8080, list() ,quiet=F)
+#
+s <- startServer("127.0.0.1", randomPort(), list())
+s <- httpuv::startServer("127.0.0.1", port=8080, list() ,quiet=F)
+
+     # A very basic application
+s <- httpuv::startServer("127.0.0.1",	8080,
+       list(
+         call = function(req) {
+           list(
+             status = 200L,
+             headers = list(
+               'Content-Type' = 'text/html'
+             ),
+             body = "Hello world!"
+           )
+         }
+       )
+     )
+     
+     s$stop()
+s
+s$stop()
+s = NULL
+httpuv::stopServer(s)
+
+httpuv::stopAllServers()
+
+httpuv::listServers()
+
+str(resp)
+
+```

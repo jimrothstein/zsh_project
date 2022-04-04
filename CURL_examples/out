@@ -1,0 +1,82 @@
+<p>Sat 02 Apr 2022</p>
+<p>PURPOSE: Focus is Google API, youtube in particular. This is summary of using cURL to obtain authorization_code and then proceed querying youtube.</p>
+<p>USAGE: This is a markdown, md, file. All zsh code is treated as verbatim. To run the zsh, use the neovim terminal and then the short cut ,tl.</p>
+<p>Once something is working convert to a zsh script file. But THIS document be NEAT summary.</p>
+<ul>
+<li>~/.Renviron for secrets * Source: https://developers.google.com/youtube/v3/guides/auth/installed-apps * zsh, `&amp;’ is special. Use single quotes around it to avoid errors.</li>
+</ul>
+<p>REF: https://stackoverflow.com/questions/53357741/how-to-perform-oauth-2-0-using-the-curl-cli#53357742et CLIENT_ID=Replace_with_your_Client_ID</p>
+<h4 id="youtube-constants">Youtube constants</h4>
+<pre><code>auth_url=https://accounts.google.com/o/oauth2/v2/auth
+token_url=https://oauth2.googleapis.com/token 
+base_url=https://www.googleapis.com/youtube/v3
+uri_redirect=
+# Per google docs, scopes are separated by whitespace
+scope=&#39;https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/youtube.force-ssl&#39;   
+
+client_id=$(Rscript -e &quot;cat(Sys.getenv(&#39;OAUTH2_ID&#39;))&quot;)
+</code></pre>
+<h4 id="run-this-in-neovim-termina-copypaste-into-browser-which-asks-user">Run this in neovim termina, copy+paste into browser, which asks user</h4>
+<p>permission and then returns auth.code !</p>
+<pre><code>echo \
+&#39;https://accounts.google.com/o/oauth2/v2/auth?&#39;\
+&#39;client_id=&#39;$client_id&#39;&amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&#39;\
+&#39;&amp;scope=&#39;$scope&#39;&amp;response_type=code&#39;</code></pre>
+<h4 id="we-now-have-auth-code.">We now have auth code.</h4>
+<p>PURPOSE: HTTR2:: Given ONE video, return ALL Comments Authorization: Bearer [YOUR_ACCESS_TOKEN] Accept: application/json</p>
+<p>(1APR2022)</p>
+<pre><code>Google&#39;s example, with loop for uri_redirect
+https://accounts.google.com/o/oauth2/v2/auth?
+ scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly&amp;
+ response_type=code&amp;
+ state=security_token%3D138r5719ru3e1%26url%3Dhttps%3A%2F%2Foauth2.example.com%2Ftoken&amp;
+ redirect_uri=http%3A//127.0.0.1%3A9004&amp;
+ client_id=client_id</code></pre>
+<pre><code>-  Google&#39;s authorization server: https://accounts.google.com/o/oauth2/v2/auth</code></pre>
+<h3 id="request-appropriate-query-sent-to">Request: appropriate query sent to:</h3>
+<p>GET https://www.googleapis.com/youtube/v3/commentThreads</p>
+<h3 id="from-explorer">From Explorer</h3>
+<pre><code>GET https://youtube.googleapis.com/youtube/v3/playlists?part=snippet%2CcontentDetails&amp;maxResults=5&amp;mine=true&amp;key=[YOUR_API_KEY] HTTP/1.1
+
+Authorization: Bearer [YOUR_ACCESS_TOKEN]
+Accept: application/json</code></pre>
+<h3 id="section"></h3>
+<pre><code>same, but as Curl
+    
+curl \
+  &#39;https://youtube.googleapis.com/youtube/v3/playlists?part=snippet%2CcontentDetails&amp;maxResults=5&amp;mine=true&amp;key=[YOUR_API_KEY]&#39; \
+  --header &#39;Authorization: Bearer [YOUR_ACCESS_TOKEN]&#39; \
+  --header &#39;Accept: application/json&#39; \
+  --compressed</code></pre>
+<h3 id="from-google-playground">From Google Playground</h3>
+<pre><code>   https://youtube.googleapis.com/youtube/v3/commentThreads?\
+        videoId=Mec9sw1cJk8&amp;part=snippet,replies</code></pre>
+<h3 id="section-1"></h3>
+<pre><code>LEGACY
+# =======================================================================================================================
+#
+#
+# from Windows
+# =======================================================================================================================
+CLIENT_SECRET=Replace_with_your_Client_Secret
+set SCOPE=https://www.googleapis.com/auth/cloud-platform
+set ENDPOINT=https://accounts.google.com/o/oauth2/v2/auth
+
+set URL=&quot;%ENDPOINT%?client_id=%CLIENT_ID%&amp;response_type=code&amp;scope=%SCOPE%&amp;access_type=offline&amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&quot;
+
+@REM start iexplore %URL%
+@REM start microsoft-edge:%URL%
+start chrome %URL%
+
+set /p AUTH_CODE=&quot;Enter Code displayed in browser: &quot;
+# =======================================================================================================================
+
+# translate to cURL
+curl ^
+--data client_id=%CLIENT_ID% ^
+--data client_secret=%CLIENT_SECRET% ^
+--data code=%AUTH_CODE% ^
+--data redirect_uri=urn:ietf:wg:oauth:2.0:oob ^
+--data grant_type=authorization_code ^
+https://www.googleapis.com/oauth2/v4/token
+</code></pre>
