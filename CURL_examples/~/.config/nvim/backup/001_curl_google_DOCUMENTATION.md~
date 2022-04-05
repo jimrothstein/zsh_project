@@ -156,7 +156,12 @@ Content-length: 261
 content-type: application/x-www-form-urlencoded
 user-agent: google-oauth-playground
 
-code=4%2F0AX4XfWi2A3xFqlfSW0XHewqsVK9nDnCqHg5b5XERiM40gKgug8EaeAq0fiM6wfZ1FPSQJg&redirect_uri=https%3A%2F%2Fdevelopers.google.com%2Foauthplayground&client_id=407408718192.apps.googleusercontent.com&client_secret=************&scope=&grant_type=authorization_code
+code=4%2F0AX4XfWi2A3xFqlfSW0XHewqsVK9nDnCqHg5b5XERiM40gKgug8EaeAq0fiM6wfZ1FPSQJg&\
+redirect_uri=https%3A%2F%2Fdevelopers.google.com%2Foauthplayground&\
+client_id=407408718192.apps.googleusercontent.com&\
+client_secret=************&\
+scope=&\
+grant_type=authorization_code
 
 HTTP/1.1 200 OK
 Content-length: 465
@@ -171,15 +176,16 @@ Pragma: no-cache
 Cache-control: no-cache, no-store, max-age=0, must-revalidate
 Date: Mon, 04 Apr 2022 21:12:06 GMT
 X-frame-options: SAMEORIGIN
-Alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+Alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-Q050=":443";\
+ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
 Content-type: application/json; charset=utf-8
 
 {
-  "access_token": "ya29.A0ARrdaM9B8H1hY-lymf1Gry01eFVPe7Z62_Ez2AaOZnnq1aGTKVYCVGnKctOc_vlrY2GGvVX_FlgCCFsizZQ0UaCBGfqHLSAs7t6vkidS2Gc4w607im_lX48XyrlOBjGrJxxmW7oFqYQr1Qzf92siIpdcLFAN", 
+  "access_token": <SNIP>, 
   "scope": "https://www.googleapis.com/auth/youtube.force-ssl https://www.googleapis.com/auth/youtube", 
   "token_type": "Bearer", 
   "expires_in": 3599, 
-  "refresh_token": "1//04R_krBa4LUSZCgYIARAAGAQSNwF-L9IrbknBWvtPCCVh8GDL6FOgJ_zd8whAt_7BWvC9MGaLeciZ3GqrFd6Cd4yAZJA3R0rUWag"
+  "refresh_token": "<SNIP"
 }
 
 ```
@@ -190,9 +196,7 @@ Content-type: application/json; charset=utf-8
 GET /youtube/v3/playlists?mine=true HTTP/1.1
 Host: youtube.googleapis.com
 Content-length: 0
-Authorization: Bearer ya29.A0ARrdaM9B8H1hY-lymf1Gry01eFVPe7Z62_Ez2AaOZnnq1aGTKVYCVGnKctOc_vlrY2GGvVX_FlgCCFsizZQ0UaCBGfqHLSAs7t6vkidS2Gc4w607im_lX48XyrlOBjGrJxxmW7oFqYQr1Qzf92siIpdcLFAN
-
-HTTP/1.1 200 OK
+Authorization: Bearer <SNIP> HTTP/1.1 200 OK
 Content-length: 907
 X-xss-protection: 0
 Content-location: https://youtube.googleapis.com/youtube/v3/playlists?mine=true
