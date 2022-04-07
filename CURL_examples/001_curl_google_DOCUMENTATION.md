@@ -31,6 +31,8 @@ redirect_uri=		http://127.0.0.1: port (no restrictions)
 								urn:ieff.wg.oauth:2.0:oob:auto (deprecated)
 							
 redirect_uri=urn:ieff.wg.oauth:2.0:oob 
+redirect_uri=http://127.0.0.1:8080
+echo $redirect_uri
 # Per google docs, scopes are separated by whitespace
 scope='https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/youtube.force-ssl'	
 
@@ -52,16 +54,24 @@ https://accounts.google.com/o/oauth2/v2/auth?
  redirect_uri=http%3A//127.0.0.1%3A9004&
  client_id=client_id
 ```
+#### Start Server
+```
+s=$(Rscript -e "httpuv::startServer('127.0.0.1', port=8080, list())")
+httpuv::stopAllServers()
+echo $(Rscript -e "httpuv::listServers()")
+```
+#### paste into browser | approve | but returns 404 not found
 ```
 echo \
 'https://accounts.google.com/o/oauth2/v2/auth?'\
-'client_id='$client_id'&redirect_uri=urn:ietf:wg:oauth:2.0:oob'\
+'client_id='$client_id'&redirect_uri='$redirect_uri\
 '&scope='$scope'&response_type=code'
 ```
 
 ####	#3  Exchange auth code for refresh and access tokens.
 ```
-auth_code=4/1AX4XfWjRp5CdGo1k7pUcFjiesqfVkng--wmxhMKO9kuJBhCXDXA9RSv9Ajc
+auth_code=4/1AX4XfWj9LGnZEWQGnubVY8GDoWSM9e6A8I5cCtSW3iJ1PJ8tCHxTu4KohoU
+auth_code=
 echo $auth_code
 ## Ex From Youtube (note:  oob:auto is now deprecated)
 POST /token HTTP/1.1
@@ -76,15 +86,15 @@ grant_type=authorization_code
 ```
 
 
-#### Curl:		"error": "invalid_request"
+#### Curl:		"error": "invalid_request", does not comply
 ```
 echo \
 curl -s X POST \
---data "client_id=$client_id" \
---data "client_secret=$client_secret" \
---data "code=$auth_code" \
---data "redirect_uri=$redirect_uri" \
---data "grant_type=authorization_code" \
+--data-urlencode "client_id=$client_id" \
+--data-urlencode "client_secret=$client_secret" \
+--data-urlencode "code=$auth_code" \
+--data-urlencode "redirect_uri=$redirect_uri" \
+--data-urlencode "grant_type=authorization_code" \
 --header 'Accept: application/json' \
 "$token_url"
 ```
