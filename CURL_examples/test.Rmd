@@ -1,8 +1,0 @@
-```yaml
-`r xfun::file_string('skeleton.yaml')`
-```
-
-
-```{r}
-print("hello") ```
-

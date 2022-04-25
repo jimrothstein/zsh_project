@@ -1,0 +1,15 @@
+<!--
+	PURPOSE:		Running this .Rmd (as normal), demonstrates how to produce .pdf
+	file with YAML automaticcally inserted .
+
+-->
+
+```yaml
+`r xfun::file_string('skeleton.yaml')`
+```
+
+#### Regular R code ...
+```{r}
+print("hello") 
+```
+

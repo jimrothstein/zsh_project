@@ -13,6 +13,9 @@
 # =========================
 #
 #
-pandoc "$1" -f markdown -o "$2"
+pandoc "$1" \
+				-f markdown \
+				--include-in-header geometry.tex \
+				-o "$2"
 
 exit
