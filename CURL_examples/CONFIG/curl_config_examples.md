@@ -1,0 +1,14 @@
+002_config_post.txt
+01_curl_config_example_url.txt
+03_curl_config_brententertainment.txt
+config_SKELETON.txt
+curl_config_examples.md
+curl_currency.sh
+curl_github.md
+headers.txt
+helium.txt
+junk.pdf
+junk.txt
+opensecrets.sh
+opensecrets.txt
+request.txt
