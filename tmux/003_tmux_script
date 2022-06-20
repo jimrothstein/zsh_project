@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Bash script, not TMUX script
+
+# this works, session-name
+if tmux has-session -t jimSession;
+	then echo "yes1";
+		endif 	
+
+# NOT work, refer to session_id $0
+if tmux has-session -t $0;
+	then echo "yes2";
+endfi
+# this works
+tmux list-windows -F "window #{window_id}, session #{session_id}" 
+
+# colors
+set -g status-left "#[fg=green]#s #[fg=yellow]#I:#w"
+

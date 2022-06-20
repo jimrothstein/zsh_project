@@ -1,0 +1,5 @@
+#!/bash/bin
+
+if tmux has-session -t 0 ; then
+    echo "has session 0"
+fi
