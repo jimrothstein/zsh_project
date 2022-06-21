@@ -84,4 +84,21 @@ print-array-collection ${fg[*]}
 	*)
 		echo "usage"
 esac
+exit
 
+
+### another method:
+## include colors
+#autoload -U colors && colors 
+
+## method 1 (works) , but duplicates in zstyle
+
+# PS1='%h_%n@%m %F{red}%/%f $ '
+# exit
+
+
+# %h  = comand no
+# %n@%m = user@machine
+# %F{red} = begin color red
+# %/
+# %f = end color
