@@ -1,10 +1,17 @@
-#!/bin/zsh
+##	NOT A SCRIPT FILE
 
+#	=====================================================
 #   PURPOSE:   EXAMPLES of GREP and regex (-P = Perl)
-#   USAGE:    ./001....  >> file.txt
+#   USAGE:		NOT A SCRIPT
+#							open neovim terminal
+							-	USE ,tl to  run each line in terminal
+	./001....  >> file.txt
 #
+#		file <- "/home/jim/code/zsh_project/ZSH_SH_FILES/001_grep_regex_P_examples.md		"
 #   :vsplit term://zsh
 #
+#	=====================================================
+
 str="hello"
 line_break="-------------------"
 r="h"

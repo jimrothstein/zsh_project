@@ -6,6 +6,8 @@
 #   :vsplit term://zsh
 #
 #
+```
+{
 alias grep="grep --color=always"
 str="hello"
 r=h
@@ -13,12 +15,15 @@ echo $str | grep -E $r -
 
 line_break="-------------------"
 print ${line_break}
-#2
+
 
 str="Surely this regular expression should match this." 
 r=this.
 echo $str | grep -E $r -
 print ${line_break}
+echo ${line_break}
+}
+```
 
 # ----------------------------
 #		PARM  ${1} must be regex surrounded by single quotes
