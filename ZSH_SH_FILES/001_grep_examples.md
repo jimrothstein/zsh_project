@@ -7,6 +7,22 @@
 #
 #
 ```
+#	Goal: remove far right portion of prompt (for clarity)
+{
+echo $RPROMPT
+right_prompt=$RPROMPT
+echo $right_prompt
+
+# remeber to reset!
+RPROMPT=
+}
+
+#### basic setup
+{
+dir=/home/jim/mp3_files/
+}
+
+
 {
 alias grep="grep --color=always"
 str="hello"
@@ -133,7 +149,28 @@ echo "Letter Letter1 LetterA" | grep -E "Letter[0-9]?"
 This line does not match but the next line does.
 bat
 
+####	 XYZ-ABC, match strings with `-`
+-	grep will match; but to display string without the `-` takes more work
+	(sed, cut ,  zsh PE ...)
+```
+regex="^([^-]*)-(.*)"
+echo $regex
+echo "abc-efg" | grep -E $regex
 
+
+#	find all mp3 with hyphen
+print -l ${dir}*
+print -l ${dir}* | grep -E ${regex}
+print -l ${dir}* | grep -E ${regex} | wc -l
+
+```
+
+####  _NA_, match all files
+```
+regex="_NA_"
+print -l ${dir}* | grep -E ${regex}
+print -l ${dir}* | grep -E ${regex} | wc -l
+```
 
 #
 # Example 1:  Files end in  'sh$' 
@@ -149,11 +186,14 @@ bat
 # print -l $1 | grep -Ei 'sh$'
 
 # ---------------  Working Example ----
+```
 # dir=~/Downloads/mp3/from_youtube/
+dir=/home/jim/mp3_files/
 
 # look for  file names with Jjudith and have  Far in title.
-# print -l ${dir}* | grep -Ei '[Jj]udith.*Far' 
+print -l ${dir}* | grep -Ei '[Jj]udith.*Far' 
 #
+```
 #
 # 
 # ----------------------
@@ -170,3 +210,9 @@ bat
 #   echo "Matched!"
 #   echo ${BASH_REMATCH[1]}
 # fi
+
+####======================
+####		Reset the prompt
+RPROMPT=$right_prompt
+
+####======================
