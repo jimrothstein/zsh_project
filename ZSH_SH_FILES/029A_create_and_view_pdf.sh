@@ -1,10 +1,11 @@
 #!/bin/zsh
 
-# /home/jim/code/bash_project
-# Thu Jan 17 19:11:16 PST 2019
 
+#	Thu 04Aug2022
 # ----------
-# create pdf from .md
+#	USE pandoc to create .pdf to STDOUT (normally send to a file.pdf) 
+#		AND display with zathura.   In zathura can save, if desired.   In zathura
+#		can save, if desired
 # use:  script md_file
 # USAGE:	./029A_create_and_view_pdf % 
 #
@@ -23,10 +24,11 @@ create_pdf() {
 	# %1 arg is file
 	# and must be .md file
 	# -t latex is pdf
-	pandoc -f markdown -t latex "$1" -o output.pdf 
+	# -o -    is forcing output t STDOUT
+	pandoc -f markdown -t pdf "$1" -o - | zathura - 
 }
 
 create_pdf "$1"
 
-zathura ${output} 
+#		zathura ${output} 
 

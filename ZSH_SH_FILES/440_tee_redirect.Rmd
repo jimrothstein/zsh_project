@@ -6,27 +6,42 @@ TAGS:  zsh, tee
 
 #### NOT finished. [See Index Card]
 
+
 !/bin/zsh
 file <- "/home/jim/code/zsh_scripts_project/440_tee_redirect.Rmd"
+1 = stand output\
+2 = stand error\
+LHS flows to 1  AND file log.txt\
 
-1 = stand output  
-
-2 = stand error
-
-LHS flows to 1  AND file log.txt
-
-
-
-```{zsh}
-echo jim1 | tee log.txt
 ```
+
+---
+###	run zsh code
+```{zsh}
+echo "jim1" | tee log.txt
+
+```
+---
+
+### cat contents of file
+```{zsh}
+cat log.txt
+```
+
 
 
 
 ```{r render, eval = F, include = F}
-rmarkdown::render("/home/jim/code/zsh_scripts_project/440_tee_redirect.Rmd",
+rmarkdown::render("/home/jim/code/zsh_project/ZSH_SH_FILES/440_tee_redirect.Rmd",
                   output_format = "pdf_document",
                   output_dir = "~/Downloads/print_and_delete/")
 
 ```
+---
+
+```{zsh, eval=F}
+zathura  "~/Downloads/print_and_delete/440_tee_redirect.pdf"
+
+```
+
 
