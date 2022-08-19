@@ -6,6 +6,7 @@
 # NOT go to github.   Instead, this backup should go to DRIVE.
 #
 #
+#	SEE ALSO file <- "/home/jim/code/zsh_project/ZSH_SH_FILES/900_tar_backup.sh	"
 ########
 
 ####	the date and the_file_name
@@ -36,6 +37,12 @@ tar -cvzf test.tar.gz *
 tar -cvzf ${theDate}_test.tar.gz *
 }
 
+
+##	Go to directory for Backup.
+{
+	cd ~/code/docs/ALZ
+	ls -la
+}
 ##	for real backup
 {
 tar -cvzf ${the_file_name} *
