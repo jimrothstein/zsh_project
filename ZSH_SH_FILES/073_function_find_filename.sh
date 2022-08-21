@@ -1,6 +1,7 @@
 #!/bin/zsh
 # file <- "073_function_find_filename.sh"
 #
+#
 #		TODO:
 #
 #		Thu May 19 23:40:16 PDT 2022
@@ -11,9 +12,12 @@
 #
 #   PURPOSE:    Return files matching the glob in arg $1
 #
-#   Details:    Grep alone DOES NOT search for names of filenames, though ll
-#   *.sh will.  This function is fake mimic of grep, but uses correct zsh
-#   command:  find.
+#   Details:    
+#				-		Grep alone DOES NOT search for names of filenames, though ll  *.sh will.  
+#				-	This function is fake mimic of grep, but uses correct zsh #   command:  find.
+#				-	NOTE: use full canonical file name for use in root or parent 	directories
+#
+#   EXAMPLE:		./073_function_find_filename '[Jj]udith'
 #
 # ===================
 #
@@ -26,6 +30,5 @@ f() {
 
 f $1
 
-#   f 'judith'
-#f ".sh"
+
 exit

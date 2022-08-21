@@ -2,9 +2,20 @@
 # 015_is_pdf
 #-----------------
 
-# ---- Ex of function ----
+#-----------------
+#	PURPOSE:	
+#		-	examples:	is file specified by the arg a pdf file?
+#		-	uses $(file) command
+#		-	also, checks the arg before proceeding
+#
+#	USAGE:		./015_is_pdf <flie_name>
+#
+# in Vim try,   :! % %
+#-----------------
+
 
 # -------------
+# BEGIN:
 #	Check script args
 # -------------
 
@@ -25,8 +36,9 @@ is_pdf()	{
 	echo "$(file $1)"		#	returns file type
 }
 
-# ---- Call fct ----
-# in Vim try,   :! % %
+#--------
+#		FINALLY,  run .
+#--------
 
 if has_arg "$1"
 then
