@@ -1,9 +1,7 @@
 #!/bin/zsh
 
-#   PURPOSE:   EXAMPLES of Basic GREP and regex (-E = Extended)
-#   USAGE:    ./001....  'regex'   >> file.txt
-#
-#   :vsplit term://zsh
+#   PURPOSE:    EXAMPLES of Basic GREP and regex (-E = Extended)
+#   USAGE:      Use as CHEAT Sheet, not interactive, not as script 
 #
 #
 ```
@@ -97,9 +95,11 @@ There is no theory of evolution. Only a list of animals Chuck Norris allows to l
 
 #	b.g			exactly one character
 The big bag of bits was bugged.
+echo "big bad boot" | grep -E b.g
 
 #	l..e		exactly 2 characters	
 You can live like a king but make sure it isn't a lie.  lake loane
+echo "big bad boot" | grep -E b.g
 
 ##### t[eo]d		NOT WORK, must escape 
 When today is over Ted will have a tedious time tidying up.  teo teod
