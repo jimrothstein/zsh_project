@@ -1,76 +1,108 @@
-```
-##	NOT A SCRIPT FILE
+---
+title: "using regex notes"
+pdf-engine: lualatex
+format: 
+  pdf:
+    toc: true
+    depth:  2
+    number-sections: true
+    colorlinks: true
+    keep-tex:  false
+    include-in-header: 
+        text: |
+            \usepackage[top=.5in, bottom=.5in, left=.5in, right=.5in]{geometry}
+            \usepackage{amsmath,amssymb,amstext,amsfonts}
+            \usepackage{lipsum}
+            \usepackage{setspace}
+---
 
-#	=====================================================
-#   PURPOSE:   COLLECT EXAMPLES of GREP and regex (-P = Perl)
-#   USAGE:		
-							-	NOT A SCRIPT
-#							- USE		 neovim terminal
-							-	USE ,tl to  run each line in terminal
-	./001....  >> file.txt
-#
-#		file <- "/home/jim/code/zsh_project/ZSH_SH_FILES/001_grep_regex_P_examples.md		"
-#   :vsplit term://zsh
-#
-#	=====================================================
-####	REF
+---
 
+\footnotesize
+as of \today
+
+\section{To run:}
+
+- quarto preview <file> --to pdf    # (opens in a viewer)
+- quarto render %	; zathura         # not quite right cli
+
+- math mode latex,  seems to work if *outside* R chunk
+$$
+x^2
+$$
+
+\section{Purpose}
+    file <- "/home/jim/code/zsh_project/ZSH_SH_FILES/001_grep_regex_P_examples.qmd
+
+    PURPOSE:   COLLECT EXAMPLES of GREP and regex (-P = Perl) [not a script]
+    USAGE:		
+
+file <- "/home/jim/code/zsh_project/ZSH_SH_FILES/001_grep_regex_P_examples.qmd
+
+\section{misc notes}
 assertion
 zero-length
 Lookaround (2 directions)
-	-	lookahead
+	- lookahead
 	- lookbehind
 Each direction comes  in two flavors, positive assertion and negative assertion 
 
-```
 -	!so 3512471 - non-capture (?:)
 
-
-```
-
-#### basic setup
-```
-str="hello"
+\section{basic setup}
+\begin{verbatim}
 line_break="-------------------"
 
-## GREP --color=always is now in the alias for grep
-## SEE $ZSH alias
-## hmmmm,  seems need to put it in here ... ???
+GREP --color=always is now in the alias for grep
+SEE $ZSH alias
 alias grep='grep --color=always'
 echo ${line_break}
-```
 
-
-
+str="hello"
 regex="h"
 echo $str | grep -E "$regex" -
 
+#   literal dot (use quotes)
+echo abc.x | echo -E '[.]'             # matches the dot 
 
-###	Why PERL? (for lookbacks)
-```
+**greedy**
+echo aZZ | grep -E Z                    # ZZ
+
+**not** **greedy**
+regex='Z$'
+echo "Z" | grep -P $regex               # Z
+echo "ZZ" | grep -P $regex              # Z
+
+
+\end{verbatim}
+
+\section{ Why PERL? (for lookbacks) }
+\begin{verbatim}
 regex='\d(?=x)'
 echo "5x" | grep -E $regex
 
 #	sees nothing
 echo "5x" | grep -P $regex
-```
 
+
+\section{Explain !}
+
+echo '\\\\' "\\\\"              expect:     \\\\ \\ 
 
 ####	complex regex
-```
 str='animal=cat,dog,cat,'
 echo $str
+<!--
+quarto compile complains this line:
 regex='(?:animal)(?:=)(\w+)(,)(?:.*)\1\2'
+-->
 echo ${regex}
 echo $str | grep -P $regex
 echo 'animal=dog,cat,dog,deer,dog,' | grep -P $regex
-```
-####	Anchors are zero-length assertions
-```
-regex='Z$'
-echo "Z" | grep -P $regex
-echo "AZ" | grep -P $regex
-echo "ZZ" | grep -P $regex
+
+\section{Anchors are zero-length assertions}
+
+\begin{verbatim}
 
 
 ### Remarks:
@@ -97,12 +129,10 @@ done
 
 
 exit
-```
 
 
 
 ####	GREEDY and BACKTRACK
-```
 Consider the String <A tasty apple>   (excluding the angle brackets)
 And the pattern <.*apple> (again exclude the angle brackets)
 
@@ -113,10 +143,8 @@ regex='.*apple'
 echo $str | grep -P $regex
 echo $str | grep -P ".*" 
 
-```
 
 #### AAA  (fix)
-```
 str="AAA"
 echo $str | grep -P "A+"
 echo $str | grep -P "(A)+"
@@ -143,10 +171,8 @@ echo $str | grep -P $regex
 str='-- comment'
 regex='--(?:.*\S)?'
 echo $str | grep -P $regex
-```
 
 ####	judy followed by digit (Fails)
-```
 
 ###  This ENDS dquote>
 	echo "
@@ -179,11 +205,9 @@ echo "Find digits"
 echo "Judith is 10 on scale of 10!"  | grep -P '\d'
 echo "Judith is 10 on scale of 10!"  | grep -P \d
 echo "Judith is 10 on scale of 10!"  | grep -P "\d"
-```
 
 
 
-```
 echo "
 
 ##	Works
@@ -219,10 +243,8 @@ echo "2021-12-13" | grep -P '(\d{4})-(\d{2})'
 echo "2021-12-13" | grep -P '(\d{4})-\d{2}\1'
 
 echo "2021-12-13" | grep -P '(\d{4})-(\d{2})-(\d{2})\3' #MONTH\1'
-```
 
 ####	trim extra space [ nothing works here]
-```
 regex='^[\t]+|[ \t]+$'
 regex='^[\s]+|[\s]+$'
 echo $regex
@@ -239,22 +261,18 @@ regex='--.*?(?=[^\r\n\S]*$)'
 echo $regex
 echo '--  this is a comment.' | grep -P $regex
 
-```
 
 
 ###	LOOKAROUNDS
-```	
 echo ${line_break}
 echo "a followed by c"
 echo 'a(?=c)'
 str=bacad
 echo $str | grep -P 'a(?=c)'
-```
 
 
 ####  Lookahead, positive or negative
 
-```
 ##	lookahead, positive
 regex='q(?=u)'
 echo "quack" | grep -P $regex
@@ -273,7 +291,6 @@ echo "qq" | grep -P $regex
 #	no match
 echo "quack" | grep -P $regex
 
-```
 
 
 
@@ -287,11 +304,9 @@ echo $str | grep -P 'a(?!c)'
 
 
 
-```	
 
 
 ####  `(?=) FIND A, followed by ...
-```
 # match
 echo "AA5" | grep -P 'A(?=5)'
 echo "A2BA5" | grep -P 'A(?=5)'
@@ -299,11 +314,9 @@ echo "A2BA5" | grep -P 'A(?=5)'
 # not a match
 echo "AB25" | grep -P 'A(?=5)'
 
-```
 
 
 ####  `(?!) FIND A, NOT followed by ...
-```
 regex='A(?!5)'
 echo "A5 AB5" | grep -P $regex
 
@@ -325,10 +338,8 @@ echo "AB25 AB5 A5" | grep -P $regex
 regex='A(?=[^5]*5)'
 echo "AB25" | grep -P $regex
 
-```
 
 ####	Lookaheads, misc examples (fix this)
-```
 #	lookaheads do NOT move ineex
 #	no match
 regex='A(?=5)(?=[A-Z])'
@@ -342,12 +353,10 @@ echo "A5C" | grep -P $regex
 regex='A(?=5).(?=[A-Z])'
 echo "A5C" | grep -P $regex
 
-```
 
 #### passwords validation (not working) 
 REF:	http://www.rexegg.com/regex-lookarounds.html#password
 
-```
 # insist 6-10 char  (rexegg.com) NOPE, no match
 regex='(?=^\w{6,10}$)'
 echo "abcdef" | grep -P $regex
@@ -369,18 +378,15 @@ echo "abcdefgh" | grep -P $regex
 	##	
 
 ####	FIND a st b immediately preceeds
-```
 echo ${line_break}
 echo "a preceeded by by b"
 reg='(?<=b)a'
 echo $reg
 str=bacad
 echo $str | grep -P '(?<=b)a'
-```
 
 
 # LOOK AROUNDS : do not capture
-```
 echo " " 
 reg='(?<=costs)\s\d\.\d{2}'
 echo "Penguin costs 2.99, and whale costs 5.99 but I only have 2.01 left"
@@ -416,10 +422,8 @@ reg='(ab|d)e'
 echo $reg
 str=bacade
 echo $str | grep -P '(ab|d)' 
-```
 
 
-```
 regex="(\w*)(.*)\\1"
 
 regex='(\w*)(.*)\1'
@@ -429,11 +433,9 @@ echo "word;word1" | grep -P ${regex}
 
 #	matches "word" only
 echo "word[]" | grep -P '(\w*)'
-```	
 
 
 #### Backreference `\1`
-```
 
 regex='(cat|dog)\1'
 echo "catXcat" | grep -P $regex
@@ -448,7 +450,9 @@ echo "cd" |  grep -P '[cd]\1'
 ##	ERROR, makes no sense.
 echo "cd" |  grep -P '[cd]\1'
 
-```
 ## In R, does what?
   p.5  <- problems(pattern="(\\w*)(.*)\\1)")
-```
+
+\end{verbatim}
+
+vim: nospell
