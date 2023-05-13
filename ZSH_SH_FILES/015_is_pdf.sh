@@ -1,5 +1,8 @@
 #!/bin/zsh
 # 015_is_pdf
+#   TAGS:   has_arg(),filetype, test, function
+#
+# last modified:  2023-05-13#
 #-----------------
 
 #-----------------

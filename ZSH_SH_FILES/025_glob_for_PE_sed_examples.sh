@@ -1,10 +1,10 @@
 #!/bin/zsh
 #	025_glob_for_PE_sed_examples.sh
 # -------------- --------------
-#   /home/jim/code/bash_project
 #	Sun Jan 27 16:11:37 PST 2019
 #	"%p      #insert name of current file
 #	BEST:  https://mywiki.wooledge.org/UsingFind
+#	TAGS:  glob, PE, sed, ZSH, increment
 # -------------- --------------
 INCLUDE=FALSE
 
