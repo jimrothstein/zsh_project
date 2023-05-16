@@ -6,10 +6,13 @@
 #
 # /home/jim/code/bash_project
 # SEE:	zshguide 
+# TAGS:  if-then, login, VIMODE,  zle -N zle-keymap-select, zsh.trace
 ############
 #	RUN:	zsh ~/bin/023_test_zsh.sh
 ############
 
+#   USAGE:    ./23_test_zsh 20
+#   echo $?    last line executed; 0=success, 1=fail
 
 case $1 in
 	10)
@@ -73,6 +76,7 @@ zle -N zle-keymap-select
 # ################
 # 	startup zsh scripts - where is param set?
 # ################
+# This saves to file:  zsh.trace
 zsh -x 2>zsh.trace	# saves startup
 exit
 grep alias zsh.trace
