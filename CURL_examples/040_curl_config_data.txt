@@ -1,9 +1,8 @@
-
 #   file <- "040_curl_config_data.txt#   not working"
 
 # ===========================================
 #   PURPOSE:    various ways to send --data
-#   USAGE:  at CLI (not as script)  
+#   USAGE:  run one-by-one at command line (not as script)  
 #
 # ===========================================
 curl -d -s -o /dev/null '{ "name": "Darth" }' http://example.com
@@ -22,7 +21,7 @@ curl -X POST -H "Content-Type: application/json" -d @- "$HOST" <<CURL_DATA
 CURL_DATA
 
 
-# works
+# works, returns raw HTML file
  curl -d "name=jim" https://example.com
 curl -d "name=curl" -d "tool=cmdline" https://example.com
 

@@ -8,7 +8,7 @@
 #   
 #   The solo `-` means to use buffer contents
 #   Filter is like :% !sort
-#   CAUTION:   run this and will replace this file with result
+#   CAUTION:   RUN this and will REPLACE this file/buffer with result
 
 # =================================================
 :nnoremap <leader>cc vipyPgvO<Esc>O<Esc>gv:!curl --config -<CR>
