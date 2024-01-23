@@ -1,0 +1,321 @@
+---
+title: skeleton.qmd
+date: last-modified
+format: html  
+# Quarto requires title, if want date to appear
+# ~/.config/kickstart/skeleton/skeleton.qmd
+---
+#   TAGS:   
+
+
+```{r echo=FALSE}
+options(crayon.enabled = TRUE)
+knitr::knit_hooks$set(output = function(x, options){
+    paste0(
+        '<pre class="r-output"><code>',
+        fansi::sgr_to_html(x = htmltools::htmlEscape(x), warn = FALSE),
+        '</code></pre>'
+    )
+})
+```
+works on this:
+```{r}
+cli::col_red("a")
+```
+works on this as well:
+```{zsh}
+echo 'abc' | grep -P --color=always 'a' 
+```
+
+```{zsh}
+echo 'abc' | grep -P 'a' 
+```
+
+```{zsh}
+echo 'abc' | grep -P --color='always' 'a'
+```
+
+### files without `s` in extension
+```{zsh}
+print -l * | grep -P --color=always '^(.*\.)[^s]+$'
+
+```
+
+```{zsh}
+print -l * | grep -P --color=always '^(.*\.)[q].*$'
+
+```
+
+```{zsh}
+print -l * | grep -P --color=always '^(.*\.)[q].*$'
+
+```
+```{r}
+
+print -l * | grep -P --color=always '^(.*\.)[q]$'
+```
+
+print -l * | grep -P --color=always '^(.*\.)[q].*$'
+```{zsh}
+#print -l * | grep -P --color=always '^(.*\.)[^.]+$'
+
+```
+
+***
+
+```{zsh}
+echo 'abc' | grep -P --color='always' 'a'
+echo 'abc' | grep -P --color=always 'a'
+echo 'abc' | grep -P 'a'
+```
+
+```{zsh}
+# alias grep='grep --color=always'
+# echo "abc" | grep --color="always" "a"
+echo "with brackets"
+echo "abc" | grep -P "a"
+
+```
+
+####	GREEDY and BACKTRACK
+Consider the String <A tasty apple>   (excluding the angle brackets)
+And the pattern <.*apple> (again exclude the angle brackets)
+
+
+initially, .* portion makes the entire string, but then can't make apple
+```{zsh}
+alias grep='grep --color=always'
+str="A tasty apple"
+regex='.*apple'
+echo $str | grep -P $regex
+echo $str | grep -P ".*" 
+```
+
+```{zsh}
+str="A tasty apple"
+regex='.*apple'
+echo $str | grep -P --color=always $regex
+echo $str | grep -P --color=always ".*" 
+```
+```{zsh}
+
+alias grep='grep --color=always'
+str="hello"
+regex="h"
+echo $str | grep -E "$regex" -
+echo $str | grep -P "$regex" -
+echo $str | grep -P --color=always "$regex" -
+```
+
+```{zsh}
+
+
+
+#   literal dot (use quotes)
+# echo abc.x | echo -E '[.]'             # matches the dot 
+echo abc.x | echo -P --color=always '[.]'             # matches the dot 
+
+
+# **greedy**
+# echo aZZ | grep -E Z                    # ZZ
+echo aZZ | grep -P --color=always Z                    # ZZ
+```
+
+```{zsh}
+# **not** **greedy**
+regex='Z$'
+echo "Z" | grep -P --color=always  $regex               # Z
+echo "ZZ" | grep -P --color=always  $regex              # Z
+```
+
+
+```
+
+\end{verbatim}
+
+\section{ Why PERL? (for lookbacks) }
+\begin{verbatim}
+regex='\d(?=x)'
+echo "5x" | grep -E $regex
+
+#	sees nothing
+echo "5x" | grep -P $regex
+
+
+\section{Explain !}
+
+echo '\\\\' "\\\\"              expect:     \\\\ \\ 
+
+####	complex regex
+str='animal=cat,dog,cat,'
+echo $str
+<!--
+quarto compile complains this line:
+regex='(?:animal)(?:=)(\w+)(,)(?:.*)\1\2'
+-->
+echo ${regex}
+echo $str | grep -P $regex
+echo 'animal=dog,cat,dog,deer,dog,' | grep -P $regex
+
+\section{Anchors are zero-length assertions}
+
+\begin{verbatim}
+
+
+### Remarks:
+#	echoing ONE expression; grep does not see 4 expressions
+echo "A Z AZ AAAAAAZ" | grep -P $regex
+
+# no dice
+echo "A" "Z" "AZ" "AAAAAZ" | grep -P $regex
+
+#	works, echo several expressoins
+dotfiles=("a" "b" "c")
+for j in "${dotfiles[@]}"
+do
+	echo "${j}" 
+done
+
+#	not work with grep
+dotfiles=("A" "Z" "AZ" "AAAAAZ")
+for j in "${dotfiles[@]}"
+do
+	echo "${j}"  | grep -P $regex
+done
+
+
+
+exit
+
+
+
+####	GREEDY and BACKTRACK
+Consider the String <A tasty apple>   (excluding the angle brackets)
+And the pattern <.*apple> (again exclude the angle brackets)
+
+
+initially, .* portion makes the entire string, but then can't make apple
+str="A tasty apple"
+regex='.*apple'
+echo $str | grep -P $regex
+echo $str | grep -P ".*" 
+
+
+#### AAA  (fix)
+str="AAA"
+echo $str | grep -P "A+"
+echo $str | grep -P "(A)+"
+
+echo $str | grep -P "(AA)+"
+echo $str | grep -P "(A)+\1"
+echo $str | grep -P "(A).\1"
+echo $str | grep -P "(A)\1"
+
+# no match!
+echo $str | grep -P "(AA)+\1"
+
+# greedy
+str="AAA"
+regex='A*'
+echo $str | grep -P $regex
+
+regex='A*?'
+echo $str | grep -P $regex
+
+regex='A+?'
+echo $str | grep -P $regex
+
+str='-- comment'
+regex='--(?:.*\S)?'
+echo $str | grep -P $regex
+
+####	judy followed by digit (Fails)
+
+###  This ENDS dquote>
+	echo "
+
+#	Works
+	echo "judy is 3" | grep -P '\d'
+
+
+# new topic	
+	echo "Find Judith followed somewhere by digit"
+
+##	ALL FAIL
+echo "Judith is 10 on scale of 10!"  | grep -P "Judith(?=.*?[0-9]\S)"
+echo "Judith is 10 on scale of 10!"  | grep -P 'Judith(?=.*?[0-9])'
+echo "'"
+
+echo "\'"
+echo "\""
+
+
+
+regex='Judith(?=.*?[0-9])'
+echo ${regex}
+
+## FAIL
+echo "Judith is 10 on scale of 10!"  | grep -P ${regex} 
+
+echo ${line_break}
+echo "Find digits"
+echo "Judith is 10 on scale of 10!"  | grep -P '\d'
+echo "Judith is 10 on scale of 10!"  | grep -P \d
+echo "Judith is 10 on scale of 10!"  | grep -P "\d"
+
+
+
+echo "
+
+##	Works
+echo "digit IF followed by somewhere by x"
+echo "3 ....a ...a" | grep -P '\d(?=.*x)'
+echo "3 ....x ...x" | grep -P '\d(?=.*x)'
+
+
+##	Works
+	echo ${line_break}
+	echo "digit IF followed immediately by x"
+	
+	##	compare:
+	echo "A: 3 ....x ...x" | grep -P '\d(?=x)'
+	echo "B: ....3x ...x" | grep -P '\d(?=x)'
+
+
+##	WORKS
+	echo ${line_break}
+	echo "Match x and digits in either order; C does not match"
+	echo "B works because followed by is zero width; sees x, so it meets criteria"
+	echo "C does not"
+
+	echo "A: ...x3"  | grep -P '^(?=.*x).*\d'
+	echo "B: ...3x"  | grep -P '^(?=.*x).*\d'
+	echo "C: ...3"  | grep -P '^(?=.*x).*\d'
+
+echo ${line_break}
+echo "to be or not to be" | grep -P '(to)(be) or not \1 \2'
+echo "to be or not to be" | grep -P '(to)(be)(?:or not) \1 \2'
+
+echo "2021-12-13" | grep -P '(\d{4})-(\d{2})'
+echo "2021-12-13" | grep -P '(\d{4})-\d{2}\1'
+
+echo "2021-12-13" | grep -P '(\d{4})-(\d{2})-(\d{2})\3' #MONTH\1'
+
+####	trim extra space [ nothing works here]
+regex='^[\t]+|[ \t]+$'
+regex='^[\s]+|[\s]+$'
+echo $regex
+
+echo " abcde" | grep -P $regex
+echo "abcde " | grep -P $regex
+
+# Fails
+echo " abcde " | grep -P $regex
+
+
+#	X(?=Y) means X followed by Y
+regex='--.*?(?=[^\r\n\S]*$)'
+echo $regex
+echo '--  this is a comment.' | grep -P $regex
+```
+vim:linebreak:nospell:nowrap:cul tw=78 fo=tqlnrc foldcolumn=1 cc=+1

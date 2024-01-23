@@ -1,0 +1,55 @@
+
+---
+title: skeleton.qmd
+date: last-modified
+engine: knitr
+---
+#   TAGS:   
+
+TODO
+- runs, but can find widget
+- NOTE:   There is NO language {shell}
+- no color output
+```{zsh}
+bindkey '\eb'
+bindkey '^[b'
+```
+```{zsh}
+echo $SHELL
+```
+```zsh
+#| echo: TRUE
+echo $SHELL
+```
+
+```{bash}
+echo $SHELL
+```
+***
+
+```{zsh}
+echo 'abc' | grep -P 'a' 
+```
+
+```{zsh}
+echo 'abc' | grep -P --color='always' 'a'
+```
+
+***
+
+```{zsh}
+echo 'abc' | grep -P --color='always' 'a'
+echo 'abc' | grep -P --color=always 'a'
+echo 'abc' | grep -P 'a'
+```
+
+```{zsh}
+# alias grep='grep --color=always'
+# echo "abc" | grep --color="always" "a"
+echo "with brackets"
+echo "abc" | grep -P "a"
+
+```
+
+
+vim:linebreak:nospell:nowrap:cul tw=78 fo=tqlnrc foldcolumn=1 cc=+1
