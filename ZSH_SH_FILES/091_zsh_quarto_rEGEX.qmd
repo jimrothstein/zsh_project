@@ -5,7 +5,13 @@ format: html
 # Quarto requires title, if want date to appear
 # ~/.config/kickstart/skeleton/skeleton.qmd
 ---
-#   TAGS:   
+TAGS:   regex, zsh, knit_hooks, fansi:: 
+
+PURPOSE:Regex examples, mostly zsh, to serve as CHEAT sheet	
+
+USE:	render as regular quarto file (quarto render ....)	
+
+
 
 
 ```{r echo=FALSE}
@@ -58,6 +64,13 @@ print -l * | grep -P --color=always '^(.*\.)[q]$'
 print -l * | grep -P --color=always '^(.*\.)[q].*$'
 ```{zsh}
 #print -l * | grep -P --color=always '^(.*\.)[^.]+$'
+
+```
+### remove first `/` and everything that follows (TODO:  in zsh)
+```{r}
+x=c('sulA///', 'sulA/', 'sulA/abc///')
+library(stringr)
+str_remove(string = x, pattern = "\\/.*") 
 
 ```
 
