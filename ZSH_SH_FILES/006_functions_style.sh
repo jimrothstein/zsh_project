@@ -1,5 +1,7 @@
 #!/usr/bin/zsh
 
+# SEE "Bash Ref Manual"  -- all tests
+
 # ====================
 # functions_style.sh
 # ====================
@@ -42,6 +44,8 @@ then
 
 exit
 ########################	   
+
+# Error Handling
 
 DIR="junk"
 E_INVALIDDIR=99
