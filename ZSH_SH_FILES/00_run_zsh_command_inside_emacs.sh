@@ -3,6 +3,7 @@
 
 # M-x shell-script-mode - which is ??
 
+# emacs command to open mini-buff and run
 # M-!    run one shell cmd in mini-buff
 # M-! ls
 
@@ -14,6 +15,7 @@
 
 
 whereis bin
+
 who 
 date
 ls -lo *.sh 
@@ -37,4 +39,5 @@ else
 fi
 
 echo " next ..."
+
 
