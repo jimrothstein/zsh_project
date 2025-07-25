@@ -1,0 +1,40 @@
+---
+title:  bash
+engine: knitr
+format: html
+---
+
+####  Bash, git examples
+
+
+#### Read from file, print line by line
+```{bash}
+#!/bin/bash
+filename="bash_examples.qmd"
+while IFS= read -r line
+do
+	echo "Process $line"
+done < "$filename"
+```
+
+#### Read file all at once, print (all 1 line)
+```{bash}
+#!/bin/bash
+file="bash_examples.qmd"
+content=$(< "$file")
+echo $content
+```
+
+
+#### logic
+0=true (success)
+1=false (fail; or any non-zero)
+
+test || cmd  cmd runs only on false 
+if 1st term returns true; no need to process 2nd
+if 1st term false, use 2nd term
+```{bash}
+#!/bin/bash
+echo "hi" || echo "by" 
+echo false || echo "by"
+```
