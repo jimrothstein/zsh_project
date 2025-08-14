@@ -1,0 +1,22 @@
+# 995_org_git_tree.org
+
+#   TODO:  https://git-scm.com/book/en/v2/Git-Internals-Git-Objects
+
+# To run, C-c C-c
+# Results appear below
+
+#+BEGIN_SRC bash
+  echo "hi"
+#+END_SRC
+
+
+
+#+BEGIN_SRC bash :results verbatim
+  mkdir -p ~/code/zsh_project/git_project/git_objects
+  cd ~/code/zsh_project/git_project/git_objects
+  ll
+#+END_SRC
+
+
+#+BEGIN_SRC bash :results verbatim
+#+END_SRC
